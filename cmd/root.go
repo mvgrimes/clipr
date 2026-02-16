@@ -8,7 +8,7 @@ import (
 )
 
 // Version is the current version of clippy.
-var Version = "0.1.0"
+var Version = "0.1.1"
 
 var rootCmd = &cobra.Command{
 	Use:   "clippy",
