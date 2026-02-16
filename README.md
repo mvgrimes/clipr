@@ -63,13 +63,13 @@ When `--max-per-clip` is exceeded the server responds with `413 Request Entity T
 
 All flags can be set via environment variables. Flags given on the command line take precedence.
 
-| Variable           | Flag             | Command  |
-|--------------------|------------------|----------|
-| `CLIP_HOST`        | `--host`         | `server` |
-| `CLIP_PORT`        | `--port`         | `server` |
-| `CLIP_MAX_PER_CLIP`| `--max-per-clip` | `server` |
-| `CLIP_MAX_CLIPS`   | `--max-clips`    | `server` |
-| `CLIP_SERVER`      | `--server`       | `paste`, `get` |
+| Variable             | Flag             | Command  |
+|----------------------|------------------|----------|
+| `CLIPPY_HOST`        | `--host`         | `server` |
+| `CLIPPY_PORT`        | `--port`         | `server` |
+| `CLIPPY_MAX_PER_CLIP`| `--max-per-clip` | `server` |
+| `CLIPPY_MAX_CLIPS`   | `--max-clips`    | `server` |
+| `CLIPPY_SERVER`      | `--server`       | `paste`, `get` |
 
 ## Development
 

@@ -13,10 +13,10 @@ var serverCmd = &cobra.Command{
 	Use:   "server",
 	Short: "Start the clippy HTTP server",
 	PreRun: func(cmd *cobra.Command, args []string) {
-		bindEnv(cmd, "host", "CLIP_HOST")
-		bindEnv(cmd, "port", "CLIP_PORT")
-		bindEnv(cmd, "max-per-clip", "CLIP_MAX_PER_CLIP")
-		bindEnv(cmd, "max-clips", "CLIP_MAX_CLIPS")
+		bindEnv(cmd, "host", "CLIPPY_HOST")
+		bindEnv(cmd, "port", "CLIPPY_PORT")
+		bindEnv(cmd, "max-per-clip", "CLIPPY_MAX_PER_CLIP")
+		bindEnv(cmd, "max-clips", "CLIPPY_MAX_CLIPS")
 	},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		host, _ := cmd.Flags().GetString("host")
