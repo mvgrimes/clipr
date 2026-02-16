@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.svg" width="120" alt="clip logo">
+</p>
+
 # clip
 
 A simple pastebin service and CLI client, written in Go.

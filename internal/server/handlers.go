@@ -1,13 +1,23 @@
 package server
 
 import (
+	_ "embed"
 	"errors"
 	"fmt"
+	"html/template"
 	"io"
 	"net/http"
 
 	"github.com/clip/internal/store"
 )
+
+//go:embed logo.svg
+var logoSVG []byte
+
+//go:embed index.html
+var indexHTML string
+
+var indexTmpl = template.Must(template.New("index").Parse(indexHTML))
 
 // Handlers holds HTTP handler methods and their dependencies.
 type Handlers struct {
@@ -16,26 +26,13 @@ type Handlers struct {
 
 func (h *Handlers) handleIndex(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	fmt.Fprint(w, `<!DOCTYPE html>
-<html>
-<head><title>clip</title></head>
-<body>
-<h1>clip — simple pastebin</h1>
-<pre>
-# Store a paste (default)
-curl -d 'hello world' http://`+r.Host+`/@
+	indexTmpl.Execute(w, struct{ Host string }{Host: r.Host})
+}
 
-# Retrieve the default paste
-curl http://`+r.Host+`/@
-
-# Store a named paste
-curl -d 'my content' http://`+r.Host+`/@/mykey
-
-# Retrieve a named paste
-curl http://`+r.Host+`/@/mykey
-</pre>
-</body>
-</html>`)
+func (h *Handlers) handleLogo(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "image/svg+xml")
+	w.Header().Set("Cache-Control", "public, max-age=86400")
+	w.Write(logoSVG)
 }
 
 func (h *Handlers) handleGet(w http.ResponseWriter, r *http.Request) {

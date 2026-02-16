@@ -12,6 +12,7 @@ func New(s store.Store) http.Handler {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /{$}", h.handleIndex)
+	mux.HandleFunc("GET /logo.svg", h.handleLogo)
 
 	mux.HandleFunc("GET /@", h.handleGet)
 	mux.HandleFunc("GET /@/{key...}", h.handleGet)
