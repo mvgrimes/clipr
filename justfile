@@ -1,6 +1,6 @@
 APP      := "clip"
 VERSION  := `perl -nE'm{Version\s*=\s*"(\d+\.\d+.\d+)"} && print $1' ./cmd/root.go`
-REGISTRY := "gcr.io/docker-registry/mg"
+REGISTRY := "gcr.io/docker-registry-mg"
 BINARY   := "clip-linux-amd64"
 
 build:
